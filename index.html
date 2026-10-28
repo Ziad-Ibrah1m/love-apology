@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fff0f3" />
+    <title>رسالة ليكي ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --pink: #e95d85;
+        --deep: #a83d63;
+        --paper: #fffdf9;
+        --ink: #6c3750;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+      }
+      body {
+        font-family: "Cairo", Tahoma, Arial, sans-serif;
+        background: radial-gradient(
+          ellipse at 50% 22%,
+          #fffafa 0,
+          #ffe5ec 55%,
+          #ffd1df 100%
+        );
+        color: var(--ink);
+        overflow-x: hidden;
+      }
+      .page {
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 35px 16px 55px;
+        position: relative;
+        isolation: isolate;
+      }
+      .bloom {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(2px);
+        opacity: 0.45;
+        z-index: -1;
+        pointer-events: none;
+      }
+      .b1 {
+        width: 240px;
+        height: 240px;
+        left: -100px;
+        top: 5%;
+        background: #ffd2e2;
+      }
+      .b2 {
+        width: 190px;
+        height: 190px;
+        right: -90px;
+        bottom: 2%;
+        background: #ffc2d6;
+      }
+      h1 {
+        font-size: clamp(1.4rem, 4.5vw, 2.3rem);
+        font-weight: 800;
+        text-align: center;
+        margin: 0 0 8px;
+        color: #a94365;
+      }
+      .subtitle {
+        text-align: center;
+        margin: 0 0 46px;
+        font-size: clamp(0.88rem, 2.7vw, 1.05rem);
+        color: #aa6880;
+      }
+      .scene {
+        position: relative;
+        width: min(90vw, 390px);
+        height: 350px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        perspective: 900px;
+      }
+      .envelope {
+        position: relative;
+        width: 100%;
+        height: 235px;
+        cursor: pointer;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        appearance: none;
+        -webkit-tap-highlight-color: transparent;
+        overflow: hidden;
+        outline-offset: 12px;
+        transition: overflow 0s linear 0.75s;
+      }
+      .envelope.open {
+        overflow: visible;
+        transition: none;
+      }
+      .envelope:focus-visible {
+        outline: 3px solid #a83d63;
+        border-radius: 8px;
+      }
+      .envelope-back {
+        position: absolute;
+        inset: 0;
+        background: #f4a8bc;
+        border-radius: 8px 8px 13px 13px;
+        box-shadow: 0 22px 48px #bf55714a;
+        z-index: 1;
+      }
+      .flap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 58%;
+        background: #f7b7c7;
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+        transform-origin: center top;
+        transform: rotateX(0deg);
+        transition:
+          transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+          z-index 0s 0.35s;
+        z-index: 5;
+        backface-visibility: visible;
+      }
+      .letter {
+        position: absolute;
+        bottom: 10px;
+        left: 6%;
+        width: 88%;
+        min-height: 300px;
+        height: auto;
+        max-height: 70svh;
+        padding: 25px 19px 20px;
+        background: var(--paper);
+        border-radius: 9px 9px 5px 5px;
+        box-shadow:
+          0 0 0 1px #f0dfe1,
+          0 8px 20px #95405829;
+        z-index: 2;
+        transform: translateY(105px) scale(0.95);
+        opacity: 0;
+        transition:
+          transform 1.05s cubic-bezier(0.2, 0.8, 0.22, 1) 0.2s,
+          box-shadow 0.8s,
+          opacity 0.2s linear;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        overflow-x: hidden;
+        overflow-y: auto;
+        scrollbar-width: none;
+      }
+      .letter::-webkit-scrollbar {
+        display: none;
+      }
+      .letter::before {
+        content: "";
+        display: block;
+        flex-shrink: 0;
+        width: 62px;
+        height: 2px;
+        background: #efacc0;
+        margin-bottom: 12px;
+        border-radius: 10px;
+      }
+      .letter h2 {
+        font-size: 1.14rem;
+        margin: 0 0 9px;
+        color: #b34368;
+        font-weight: 800;
+      }
+      .letter p {
+        white-space: pre-line;
+        line-height: 1.95;
+        margin: 0;
+        font-size: 0.87rem;
+        font-weight: 600;
+        overflow-wrap: anywhere;
+      }
+      .signature {
+        font-size: 0.93rem;
+        font-weight: 800;
+        margin-top: 11px;
+        color: #c34c72;
+      }
+      .letter-heart {
+        margin-top: 4px;
+        font-size: 1.5rem;
+      }
+      .front {
+        position: absolute;
+        inset: 0;
+        z-index: 4;
+        pointer-events: none;
+        border-radius: 0 0 13px 13px;
+        background: #f9c3d1;
+        clip-path: polygon(0 0, 50% 53%, 100% 0, 100% 100%, 0 100%);
+      }
+      .front-bottom {
+        position: absolute;
+        inset: 0;
+        z-index: 4;
+        pointer-events: none;
+        background: #f3a4ba;
+        border-radius: 0 0 13px 13px;
+        clip-path: polygon(0 100%, 50% 47%, 100% 100%);
+      }
+      .seal {
+        position: absolute;
+        width: 54px;
+        height: 54px;
+        top: calc(53% - 27px);
+        left: calc(50% - 27px);
+        z-index: 6;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #d95a80, #ad355f);
+        color: white;
+        box-shadow: 0 4px 13px #a339606b;
+        font-size: 27px;
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
+      }
+      .open .flap {
+        transform: rotateX(180deg);
+        z-index: 1;
+      }
+      .open .letter {
+        transform: translateY(-115px) scale(1);
+        opacity: 1;
+        box-shadow: 0 16px 35px #95405829;
+        z-index: 3;
+        transition-delay: 0.3s, 0.3s, 0.3s;
+      }
+      .open .seal {
+        opacity: 0;
+        transform: scale(0.5);
+        pointer-events: none;
+      }
+      .instruction {
+        margin: 32px 0 0;
+        text-align: center;
+        color: #ad6c83;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+      .reset {
+        background: white;
+        color: #af4268;
+        border: 1px solid #e8a3b7;
+        border-radius: 50px;
+        padding: 9px 22px;
+        font:
+          700 0.9rem "Cairo",
+          Tahoma,
+          sans-serif;
+        cursor: pointer;
+        box-shadow: 0 5px 18px #d26b8724;
+        margin-top: 17px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s;
+      }
+      .reset.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .heart {
+        position: fixed;
+        bottom: -30px;
+        pointer-events: none;
+        z-index: -1;
+        opacity: 0;
+        animation: floatUp linear infinite;
+        color: #de85a1;
+      }
+      @keyframes floatUp {
+        0% {
+          transform: translate3d(0, 0, 0) rotate(-15deg);
+          opacity: 0;
+        }
+        15% {
+          opacity: 0.6;
+        }
+        85% {
+          opacity: 0.45;
+        }
+        100% {
+          transform: translate3d(35px, -110vh, 0) rotate(20deg);
+          opacity: 0;
+        }
+      }
+      @media (max-width: 420px) {
+        .scene {
+          height: 340px;
+        }
+        .envelope {
+          height: 210px;
+        }
+        .letter {
+          min-height: 285px;
+        }
+        .open .letter {
+          transform: translateY(-112px) scale(1);
+        }
+        .letter p {
+          font-size: 0.82rem;
+        }
+        .subtitle {
+          margin-bottom: 30px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="bloom b1"></div>
+      <div class="bloom b2"></div>
+      <h1 id="headline">في رسالة صغيرة ليكي ❤️</h1>
+      <p class="subtitle">ممكن تفتحي الظرف؟ في كلام من قلبي.</p>
+      <div class="scene">
+        <button
+          class="envelope"
+          id="envelope"
+          type="button"
+          aria-label="افتحي رسالة الاعتذار"
+          aria-expanded="false"
+        >
+          <span class="envelope-back"></span>
+          <span class="flap"></span>
+          <div class="letter" id="letter" dir="rtl" lang="ar">
+            <h2 id="letterTitle">كاتكوتى ❤️</h2>
+            <p id="letterMessage">
+              عارف أنك اتضايقتى من اللى انا عملته وعارف أننا اتكلمنا فى الحوار
+              امبارح ويعتبر قفلناه بس انا من جوايا مش حاسس انك مرضيه وحاسك أخده
+              جنب منى ممكن يكون الإحساس ده غلط بس مهما كان انا آسف و بعتذر و وعد
+              منى الحاجة دى مش هتتكرر تانى ولو مش انا السبب فى أنك متضايقه فا
+              انا بعتذرلك برضو عشان موش بحب اشوفك متضايقه و أى حاجة عملتها
+              ضايقتك أو بتضايقك لو سمحت قوليلى على طول بحبك ❤️
+            </p>
+            <span class="signature" id="signature">من قلب بيحبك</span>
+            <span class="letter-heart" aria-hidden="true">💗</span>
+          </div>
+          <span class="front"></span><span class="front-bottom"></span>
+          <span class="seal" aria-hidden="true">♥</span>
+        </button>
+      </div>
+      <p class="instruction" id="instruction">دوسى على القلب</p>
+      <button class="reset" id="reset" type="button">اقفلي الظرف 💌</button>
+    </main>
+    <script>
+      // ✨ EDIT THESE FOUR LINES TO PERSONALIZE YOUR PAGE ✨
+      const config = {
+        headline: "في رسالة صغيرة ليكي ❤️",
+        greeting: "كاتكوتى ❤️",
+        message: `عارف أنك اتضايقتى من اللى انا عملته وعارف أننا اتكلمنا فى الحوار امبارح ويعتبر قفلناه بس انا من جوايا مش حاسس انك مرضيه وحاسك أخده جنب منى ممكن يكون الإحساس ده غلط بس مهما كان انا آسف و بعتذر و وعد منى الحاجة دى مش هتتكرر تانى ولو مش انا السبب فى أنك متضايقه فا انا بعتذرلك برضو عشان موش بحب اشوفك متضايقه و أى حاجة عملتها ضايقتك أو بتضايقك لو سمحت قوليلى على طول
+بحبك ❤️`,
+        signOff: "كاتكوتك",
+      };
+      document.getElementById("headline").textContent = config.headline;
+      document.getElementById("letterTitle").textContent = config.greeting;
+      document.getElementById("letterMessage").textContent = config.message;
+      document.getElementById("signature").textContent = config.signOff;
+      const envelope = document.getElementById("envelope");
+      const reset = document.getElementById("reset");
+      const instruction = document.getElementById("instruction");
+      function setOpen(open) {
+        envelope.classList.toggle("open", open);
+        envelope.setAttribute("aria-expanded", String(open));
+        reset.classList.toggle("show", open);
+        instruction.textContent = open
+          ? "كل كلمة هنا من قلبي ليكي ❤️"
+          : "دوسى على القلب";
+      }
+      envelope.addEventListener("click", () =>
+        setOpen(!envelope.classList.contains("open")),
+      );
+      reset.addEventListener("click", () => setOpen(false));
+      for (let i = 0; i < 17; i++) {
+        const h = document.createElement("span");
+        h.className = "heart";
+        h.textContent = i % 3 === 0 ? "♡" : "♥";
+        h.style.left = 5 + Math.random() * 90 + "%";
+        h.style.fontSize = 13 + Math.random() * 17 + "px";
+        h.style.animationDuration = 11 + Math.random() * 13 + "s";
+        h.style.animationDelay = -Math.random() * 24 + "s";
+        document.body.appendChild(h);
+      }
+    </script>
+  </body>
+</html>
